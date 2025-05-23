@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DuckShot Clone</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1>DuckShot Clone</h1>
+<p>Pontuação: <span id="score">0</span></p>
+<div id="game-area" style="position: relative; width: 600px; height: 480px; border: 1px solid black;"></div>
+
+<script>
+    const name = localStorage.getItem('playerName');
+    if (!name) {
+        window.location.href = 'login.html';
+    }
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

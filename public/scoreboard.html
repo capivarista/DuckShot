@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Ranking - DuckShot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Ranking de Jogadores</h1>
+<table border="1" style="margin: auto;">
+  <thead>
+  <tr>
+    <th>Posição</th>
+    <th>Nome</th>
+    <th>Pontuação</th>
+  </tr>
+  </thead>
+  <tbody id="ranking"></tbody>
+</table>
+<script>
+  async function loadRanking() {
+    const res = await fetch('/ranking');
+    if (!res.ok) {
+      alert('Erro ao carregar ranking');
+      return;
+    }
+    const players = await res.json();
+    const tbody = document.getElementById('ranking');
+    tbody.innerHTML = ''; // limpa antes de inserir
+    players.forEach((player, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${index + 1}</td><td>${player.name}</td><td>${player.score}</td>`;
+      tbody.appendChild(row);
+    });
+  }
+  loadRanking();
+</script>
+</body>
+</html>
